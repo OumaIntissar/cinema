@@ -1,6 +1,7 @@
 package org.sid.cinema.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -30,7 +32,11 @@ public class Projection implements Serializable {
 	@ManyToOne
 	private Film film;
 	@ManyToOne
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private Salle salle;
+	@OneToMany(mappedBy = "projection")
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private Collection<Ticket> tickets;
 	@ManyToOne
 	private Seance seance;
 
