@@ -139,7 +139,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 					Film film = new Film();
 					film.setTitre(f);
 					film.setDuree(duree[new Random().nextInt(duree.length)]);
-					film.setPhoto(f.replaceAll(" ", "_"));
+					film.setPhoto(f.replaceAll(" ", "_")+".jpg");
 					film.setCategorie(categories.get(new Random().nextInt(categories.size())));
 					filmRepository.save(film);
 
